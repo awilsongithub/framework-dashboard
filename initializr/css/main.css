@@ -1,0 +1,19 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* GOOGLE SEARCHES WIDGET IFRAME */
+#trends-widget-1 {
+    height: 400px;
+}
+
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 200;
+}
+.jumbotron {
+    padding-bottom: 20px;
+}
