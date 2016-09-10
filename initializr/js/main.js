@@ -120,14 +120,42 @@ function renderDataToPage(allData){
     $('#ember-stargazers').text(allData[2].stargazers_count);
     $('#vue-stargazers').text(allData[3].stargazers_count);
 
-    
+    // update forks
+    $('#angular-forks').text(allData[0].forks_count);
+    $('#react-forks').text(allData[1].forks_count);
+    $('#ember-forks').text(allData[2].forks_count);
+    $('#vue-forks').text(allData[3].forks_count);
 
+
+
+    showLastUpdateTime();
 
 
 }
 
 
+// show 'last update' using current time
+function showLastUpdateTime(){
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+	var month = currentDate.getMonth() + 1;
+	var year = currentDate.getFullYear();
+	var hours = currentDate.getHours();
+	var minutes = currentDate.getMinutes();
+	if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+	var suffix = "AM";
+	if (hours >= 12) {
+        suffix = "PM";
+	    hours = hours - 12;
+	} else if (hours === 0) {
+        hours = 12;
+	}
+	$('#last-update').text(day + "/" + month + "/" + year + " at " + hours + ":" + minutes + " " + suffix);
+}
 
+showLastUpdateTime();
 
 // init function containing
 // initial calls to ajax functions
