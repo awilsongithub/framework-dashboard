@@ -49,7 +49,7 @@
         <h1>Framework Dashboard</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <!-- display time and date of last data update -->
-        <b>Last Update:&nbsp<span id='last-update'></span></b>
+        <b>Last Update:&nbsp<span class='digital-font' id='last-update'></span></b>
       </div>
     </div>
 
@@ -104,26 +104,30 @@
     </div> <!-- end container -->
 
 
-
+    <hr>
     <!-- STATIC CONTENT EMBEDS -->
     <div class="container">
 
-        <!-- GOOGLE SEARCH TRENDS -->
-        <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/734_RC02/embed_loader.js"></script> <script type="text/javascript">
-            trends.embed.renderExploreWidget(
-                "TIMESERIES",
-                {"comparisonItem":[
-                    {"keyword":"ember js","geo":"","time":"all"},
-                    {"keyword":"angular js","geo":"","time":"all"},
-                    {"keyword":"backbone js","geo":"","time":"all"},
-                    {"keyword":"react js","geo":"","time":"all"}
-                ],
-                "category":0,
-                "property":""
-                },
-                {});
 
-        </script>
+        <!-- GOOGLE SEARCH TRENDS -->
+        <div id='searches-graph'>
+            <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/734_RC02/embed_loader.js"></script> <script type="text/javascript">
+                trends.embed.renderExploreWidget(
+                    "TIMESERIES",
+                    {"comparisonItem":[
+                        {"keyword":"ember js","geo":"","time":"all"},
+                        {"keyword":"angular js","geo":"","time":"all"},
+                        {"keyword":"backbone js","geo":"","time":"all"},
+                        {"keyword":"react js","geo":"","time":"all"}
+                    ],
+                    "category":0,
+                    "property":""
+                    },
+                    {});
+            </script>
+        </div>
+
+
 
         <!-- WAPPALYZER MARKET REACH GRAPH -->
         <script id="infogram_0_market-reach-8927" title="Market Reach" src="//e.infogr.am/js/embed.js?C03" type="text/javascript"></script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a target="_blank" href="https://infogr.am/market-reach-8927" style="color:#989898!important;text-decoration:none!important;">Market Reach</a><br><a style="color:#989898!important;text-decoration:none!important;" href="https://infogr.am" target="_blank">Create your own infographics</a></div>

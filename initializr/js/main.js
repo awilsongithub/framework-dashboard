@@ -10,15 +10,20 @@ var angularData;
 var allData = []; // define new array. array needed if we will use ng-repeat to enable filtering and sorting
 
 // UPDATE VARIABLES
-var FREQ = 7560000; // update frequency: just over 2 hours as only 6 calls/hour without Oauth.
+var FREQ = 3600000; // update frequency: 1 hour as only 60 calls/hour allowed by api.gihub without Oauth.
 var repeat = true; // turn updates on or off
 
-// API URLS
+// MAIN API URLS
 var emberURL = 'https://api.github.com/repos/emberjs/ember.js';
 var vueURL = 'https://api.github.com/repos/vuejs/vue';
 var angularURL = 'https://api.github.com/repos/angular/angular.js';
 var reactURL = 'https://api.github.com/repos/facebook/react';
 
+// ISSUES API URLS
+var emberIssuesURL = 'https://api.github.com/repos/emberjs/ember.js/issues';
+var vueIssuesURL = 'https://api.github.com/repos/vuejs/vue/issues';
+var angularIssuesURL = 'https://api.github.com/repos/angular/angular.js/issues';
+var reactIssuesURL = 'https://api.github.com/repos/facebook/react/issues';
 
 
 
@@ -28,10 +33,18 @@ var reactURL = 'https://api.github.com/repos/facebook/react';
     call function to make delayed calls and repeate every 2.1 hours
 ==================================== */
 $(document).ready(function() {
+
+    // CALL MAIN API'S FIRST
     getData(angularURL);
     getData(reactURL);
     getData(emberURL);
     getData(vueURL);
+
+    // CALL "ISSUES" API'S SECOND (TO ADD SINGLE ITEM TO MAIN API DATA)
+    getData(angularIssuesURL);
+    getData(reactIssuesURL);
+    getData(emberIssuesURL);
+    getData(vueIssuesURL);
 
 
 });
@@ -83,19 +96,59 @@ function makeDelayedCallsAndRepeat(){
     conditionals used: if react save at index 1, etc.
 ==================================== */
 function combineData(data){
-    if (data.name == 'angular.js'){
-        allData[0] = data;
-    } else if ( data.name == 'react'){
-        allData[1] = data;
-    } else if ( data.name == 'ember.js'){
-        allData[2] = data;
-    } else if ( data.name == 'vue'){
-        allData[3] = data;
+
+    // if data has name field (issues api data does not), add as main data array object
+    if (data.name){
+        if (data.name == 'angular.js'){
+            allData[0] = data;
+        } else if ( data.name == 'react'){
+            allData[1] = data;
+        } else if ( data.name == 'ember.js'){
+            allData[2] = data;
+        } else if ( data.name == 'vue'){
+            allData[3] = data;
+        }
     }
+    // if data is an array (issues data IS an array), add to existing main data object as an additional field "total_issues"
+    else if ( Array.isArray(data) ){
+
+        console.log('hello from passed sec conditional');
+        console.log(data[0].number); // 15122
+
+        // check the repo so data added to correct object
+        if (data[0].repository_url == angularURL){
+            // allData[0].total_issues = data.number;
+            // console.log(allData[0].total_issues);
+            console.log('hello from a issues conditional block');
+        }
+
+
+        // } else if (data.repository_url == reactURL){
+        //     allData[1].total_issues = data.number;
+        // } else if (data.repository_url == emberURL){
+        //     allData[2].total_issues = data.number;
+        // } else if (data.repository_url == vueURL){
+        //     allData[3].total_issues = data.number;
+        // }
+        //
+        // console.log('total_issues angular:' + allData[0].total_issues);
+    }
+
+
     console.log('here is allData:');
     console.log(allData);
     renderDataToPage(allData);
 }
+
+
+
+/* ====================================
+    CALCULATE PERCENTAGE OF ISSUES THAT HAVE BEEN closed
+    (a metric for project support)
+    use # total_issues - # open_issues = # closed_issues.
+    # closed / # total = fraction ie .8
+    remove decimals from fraction + '%' for percentage
+==================================== */
 
 
 
@@ -114,13 +167,13 @@ function renderDataToPage(allData){
     $('td:nth-child(2)').empty();
     $('td:nth-child(3)').empty();
 
-    // update stargazers
+    // update stargazers column
     $('#angular-stargazers').text(allData[0].stargazers_count);
     $('#react-stargazers').text(allData[1].stargazers_count);
     $('#ember-stargazers').text(allData[2].stargazers_count);
     $('#vue-stargazers').text(allData[3].stargazers_count);
 
-    // update forks
+    // update forks column
     $('#angular-forks').text(allData[0].forks_count);
     $('#react-forks').text(allData[1].forks_count);
     $('#ember-forks').text(allData[2].forks_count);

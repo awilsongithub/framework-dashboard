@@ -17,3 +17,12 @@
 .jumbotron {
     padding-bottom: 20px;
 }
+
+/* DIDN'T WORK */
+/*@font-face {
+    font-family: Digital;
+    src: url('djb-get-digital.ttf');
+}
+.digital-font {
+    font-family: Digital;
+}*/
