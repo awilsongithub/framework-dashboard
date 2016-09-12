@@ -35,16 +35,16 @@ var reactIssuesURL = 'https://api.github.com/repos/facebook/react/issues';
 $(document).ready(function() {
 
     // CALL MAIN API'S FIRST
-    getData(angularURL);
-    getData(reactURL);
-    getData(emberURL);
-    getData(vueURL);
+    // getData(angularURL);
+    // getData(reactURL);
+    // getData(emberURL);
+    // getData(vueURL);
 
     // CALL "ISSUES" API'S SECOND (TO ADD SINGLE ITEM TO MAIN API DATA)
-    getData(angularIssuesURL);
-    getData(reactIssuesURL);
-    getData(emberIssuesURL);
-    getData(vueIssuesURL);
+    // getData(angularIssuesURL);
+    // getData(reactIssuesURL);
+    // getData(emberIssuesURL);
+    // getData(vueIssuesURL);
 
 
 });
@@ -191,10 +191,10 @@ function renderDataToPage(allData){
     $('#vue-forks').text(allData[3].forks_count);
 
     // update issue support
-    $('#angular-support').text(allData[0].issues_closed_percentage);
-    $('#react-support').text(allData[1].issues_closed_percentage);
-    $('#ember-support').text(allData[2].issues_closed_percentage);
-    $('#vue-support').text(allData[3].issues_closed_percentage);
+    $('#angular-support').text(allData[0].issues_closed_percentage + '%');
+    $('#react-support').text(allData[1].issues_closed_percentage + '%');
+    $('#ember-support').text(allData[2].issues_closed_percentage + '%');
+    $('#vue-support').text(allData[3].issues_closed_percentage + '%');
 
 
 

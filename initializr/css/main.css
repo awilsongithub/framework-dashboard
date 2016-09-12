@@ -22,6 +22,9 @@
     font-family: 'Orbitron', sans-serif;
     color: red;
 }
+table small {
+    font-weight: lighter;
+}
 
 
 /* DIDN'T WORK */

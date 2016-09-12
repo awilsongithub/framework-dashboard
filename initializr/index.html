@@ -30,43 +30,77 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Javascript Front End Framework Dashboard</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+          <!-- form in template removed .... -->
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
+
     <div class="jumbotron">
       <div class="container">
-        <h1>Framework Dashboard</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <!-- display time and date of last data update -->
-        <b>Last Update:&nbsp<span class='dynamic-text' id='last-update'></span></b>
+          <h2>Helping you choose a winning technology...</h2>
       </div>
     </div>
 
     <!-- TABLE OF DATA -->
     <div class="container">
+    <h3>Current Github Live Stats</h3>
+
+    <!-- more info modal link -->
+    <a data-toggle='modal' data-target='#githubModal'><p>Why these stats?&nbsp<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></p></a>
+    <!-- modal itself -->
+    <div class="modal fade" id="githubModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Why these stats?</h4>
+          </div>
+          <div class="modal-body">
+              <h4>Stargazers:<span class='text-muted'>&nbsp As a measure of project popularity</span></h4>
+              <span class='text-muted'>As a measure of project popularity</span>
+                  <p>“Popularity of a repository is measured by its number of ‘stargazers’...  It is not yet clear to us whether it is the project’s popularity that attracts contributors or, vice-versa… (but) the large number of contributors results in good and, consequently, popular projects.” <br><br>
+                      From <a href="https://ai2-s2-pdfs.s3.amazonaws.com/1fb1/36795f4da6f8ee3e348b088910805d4d00b5.pdf" target="_blank">Github Projects: Quality Analysis of Open Source Software, Computer Science Social Informatics (2014)</a>
+                  </p>
+              <hr>
+              <h4>% Of Issues Closed</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <hr>
+              <h4>Stargazers</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+
+
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th></th>
-                <th>Popularity</th>
-                <th>Issue Support</th>
-                <th>Forks</th>
-                <th>wappalyzer</th>
-                <th>searches</th>
+                <th>
+                    Stargazers<br>
+                    <small>As measure of project popularity</small>
+                </th>
+                <th>
+                    % Of Issues Closed<br>
+                    <small>As measure of community support</small>
+                </th>
+                <th>
+                    Forks<br>
+                    <small>As measure of development activity</small>
+                </th>
+                <!-- <th>wappalyzer</th>
+                <th>searches</th> -->
             </tr>
         </thead>
         <tbody>
@@ -75,35 +109,34 @@
                 <td id='angular-stargazers'></td>
                 <td id='angular-support'></td>
                 <td id='angular-forks'></td>
-                <td></td>
-                <td></td>
             </tr>
             <tr>
                 <th>React</th>
                 <td id='react-stargazers'></td>
                 <td id='react-support'></td>
                 <td id='react-forks'></td>
-                <td></td>
-                <td></td>
+
             </tr>
             <tr>
                 <th>Ember</th>
                 <td id='ember-stargazers'></td>
                 <td id='ember-support'></td>
                 <td id='ember-forks'></td>
-                <td></td>
-                <td></td>
+
             </tr>
             <tr>
                 <th>Vue</th>
                 <td id='vue-stargazers'></td>
                 <td id='vue-support'></td>
                 <td id='vue-forks'></td>
-                <td></td>
-                <td></td>
+
             </tr>
         </tbody>
     </table>
+
+    <!-- display time and date of last data update -->
+    <p>Last Update:&nbsp<span class='dynamic-text' id='last-update'></span></p>
+
     </div> <!-- end container -->
 
 
