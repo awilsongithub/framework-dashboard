@@ -17,6 +17,12 @@
 .jumbotron {
     padding-bottom: 20px;
 }
+/* SELECT CHILD ELEMENTS 2,3,4 IN EACH TABLE ROW  */
+.dynamic-text, tr > :nth-child(2), tr > :nth-child(3), tr > :nth-child(4),  {
+    font-family: 'Orbitron', sans-serif;
+    color: red;
+}
+
 
 /* DIDN'T WORK */
 /*@font-face {

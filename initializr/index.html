@@ -10,6 +10,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- digital clock style font for dynamic metrics -->
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+        <link rel="stylesheet" href="fonts/Orbitron/Orbitron-Medium.ttf" media="screen" title="no title">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -49,7 +52,7 @@
         <h1>Framework Dashboard</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <!-- display time and date of last data update -->
-        <b>Last Update:&nbsp<span class='digital-font' id='last-update'></span></b>
+        <b>Last Update:&nbsp<span class='dynamic-text' id='last-update'></span></b>
       </div>
     </div>
 
@@ -70,7 +73,7 @@
             <tr>
                 <th>Angular</th>
                 <td id='angular-stargazers'></td>
-                <td></td>
+                <td id='angular-support'></td>
                 <td id='angular-forks'></td>
                 <td></td>
                 <td></td>
@@ -78,7 +81,7 @@
             <tr>
                 <th>React</th>
                 <td id='react-stargazers'></td>
-                <td></td>
+                <td id='react-support'></td>
                 <td id='react-forks'></td>
                 <td></td>
                 <td></td>
@@ -86,7 +89,7 @@
             <tr>
                 <th>Ember</th>
                 <td id='ember-stargazers'></td>
-                <td></td>
+                <td id='ember-support'></td>
                 <td id='ember-forks'></td>
                 <td></td>
                 <td></td>
@@ -94,7 +97,7 @@
             <tr>
                 <th>Vue</th>
                 <td id='vue-stargazers'></td>
-                <td></td>
+                <td id='vue-support'></td>
                 <td id='vue-forks'></td>
                 <td></td>
                 <td></td>

@@ -115,11 +115,9 @@ function combineData(data){
         console.log('hello, ready to add issues data...');
         console.log(data[0].number); // 15122
 
-        // EACH CONDITIONAL ADDS NEW DATA TO ALLDATA THEN CALLS HELPER TO RUN CALCULATIONS AND ADD NEW PROPERTIES TO ALLDATA
+        // EACH CONDITIONAL ADDS NEW DATA TO ALLDATA
         if (data[0].repository_url == angularURL){
             allData[0].total_issues = data[0].number;
-            calculateClosedPercentage();
-
         } else if (data[0].repository_url == reactURL){
             allData[1].total_issues = data[0].number;
             console.log('allData 1 issues:' + allData[1].total_issues);
@@ -130,9 +128,12 @@ function combineData(data){
             allData[3].total_issues = data[0].number;
             console.log('allData 3 issues:' + allData[3].total_issues);
         }
+
+        // CALL HELPER TO RUN CALCULATIONS AND ADD NEW PROPERTIES TO ALLDATA
+         calculateClosedPercentage(allData);
     }
 
-    console.log('here is allData:');
+    console.log('here is allData, should have issues_closed_percentage:');
     console.log(allData);
     renderDataToPage(allData);
 }
@@ -145,14 +146,20 @@ function combineData(data){
     # closed / # total = fraction ie .8
     remove decimals from fraction + '%' for percentage
 ==================================== */
-function calculateClosedPercentage(){
-    console.log('here is allData in calc function: ' + allData[0]);
+function calculateClosedPercentage(x){
+    console.log('here is allData in calc function');
+    console.log(x);
 
+    // loop thru allData to calculate and add new property
+    for (var i = 0; i < allData.length ; i++){
+        x[i].closed_issues = x[i].total_issues - x[i].open_issues;
+        console.log(x[i].closed_issues);
+        var fraction = x[i].closed_issues / x[i].total_issues;
+        // convert to string, keeping only 2 decimal places
+        x[i].issues_closed_percentage = fraction.toFixed(2);
+        console.log(x[i].issues_closed_percentage);
+    }
 
-    // x.closed_issues = x.total_issues - x.open_issues;
-    // x.issues_closed_percentage = Math.trunc( x.closed_issues / x.total_issues );
-    // console.log('object w added properties:' + x);
-    // return x;
 }
 
 
@@ -183,6 +190,12 @@ function renderDataToPage(allData){
     $('#ember-forks').text(allData[2].forks_count);
     $('#vue-forks').text(allData[3].forks_count);
 
+    // update issue support
+    $('#angular-support').text(allData[0].issues_closed_percentage);
+    $('#react-support').text(allData[1].issues_closed_percentage);
+    $('#ember-support').text(allData[2].issues_closed_percentage);
+    $('#vue-support').text(allData[3].issues_closed_percentage);
+
 
 
     showLastUpdateTime();
@@ -205,7 +218,9 @@ function showLastUpdateTime(){
 	var suffix = "AM";
 	if (hours >= 12) {
         suffix = "PM";
-	    hours = hours - 12;
+	    if (hours != 12){
+            hours = hours - 12;
+        }
 	} else if (hours === 0) {
         hours = 12;
 	}
