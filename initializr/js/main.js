@@ -109,31 +109,28 @@ function combineData(data){
             allData[3] = data;
         }
     }
-    // if data is an array (issues data IS an array), add to existing main data object as an additional field "total_issues"
+    // IF DATA IS AN ARRAY THAT MEANS IT IS FROM THE ISSUES API
+    // so add it accordingly onto the existing main data
     else if ( Array.isArray(data) ){
-
-        console.log('hello from passed sec conditional');
+        console.log('hello, ready to add issues data...');
         console.log(data[0].number); // 15122
 
-        // check the repo so data added to correct object
+        // EACH CONDITIONAL ADDS NEW DATA TO ALLDATA THEN CALLS HELPER TO RUN CALCULATIONS AND ADD NEW PROPERTIES TO ALLDATA
         if (data[0].repository_url == angularURL){
-            // allData[0].total_issues = data.number;
-            // console.log(allData[0].total_issues);
-            console.log('hello from a issues conditional block');
+            allData[0].total_issues = data[0].number;
+            calculateClosedPercentage();
+
+        } else if (data[0].repository_url == reactURL){
+            allData[1].total_issues = data[0].number;
+            console.log('allData 1 issues:' + allData[1].total_issues);
+        } else if (data[0].repository_url == emberURL){
+            allData[2].total_issues = data[0].number;
+            console.log('allData 2 issues:' + allData[2].total_issues);
+        } else if (data[0].repository_url == vueURL){
+            allData[3].total_issues = data[0].number;
+            console.log('allData 3 issues:' + allData[3].total_issues);
         }
-
-
-        // } else if (data.repository_url == reactURL){
-        //     allData[1].total_issues = data.number;
-        // } else if (data.repository_url == emberURL){
-        //     allData[2].total_issues = data.number;
-        // } else if (data.repository_url == vueURL){
-        //     allData[3].total_issues = data.number;
-        // }
-        //
-        // console.log('total_issues angular:' + allData[0].total_issues);
     }
-
 
     console.log('here is allData:');
     console.log(allData);
@@ -143,13 +140,20 @@ function combineData(data){
 
 
 /* ====================================
-    CALCULATE PERCENTAGE OF ISSUES THAT HAVE BEEN closed
-    (a metric for project support)
+    CALCULATE FRACTION OF ISSUES CLOSED AS METRIC OF SUPPORT FOR PROJECT
     use # total_issues - # open_issues = # closed_issues.
     # closed / # total = fraction ie .8
     remove decimals from fraction + '%' for percentage
 ==================================== */
+function calculateClosedPercentage(){
+    console.log('here is allData in calc function: ' + allData[0]);
 
+
+    // x.closed_issues = x.total_issues - x.open_issues;
+    // x.issues_closed_percentage = Math.trunc( x.closed_issues / x.total_issues );
+    // console.log('object w added properties:' + x);
+    // return x;
+}
 
 
 /* ====================================
