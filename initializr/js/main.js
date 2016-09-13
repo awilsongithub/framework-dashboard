@@ -34,17 +34,26 @@ var reactIssuesURL = 'https://api.github.com/repos/facebook/react/issues';
 ==================================== */
 $(document).ready(function() {
 
+
+
+
     // CALL MAIN API'S FIRST
-    // getData(angularURL);
-    // getData(reactURL);
-    // getData(emberURL);
-    // getData(vueURL);
+    getData(angularURL);
+    getData(reactURL);
+    getData(emberURL);
+    getData(vueURL);
 
     // CALL "ISSUES" API'S SECOND (TO ADD SINGLE ITEM TO MAIN API DATA)
-    // getData(angularIssuesURL);
-    // getData(reactIssuesURL);
-    // getData(emberIssuesURL);
-    // getData(vueIssuesURL);
+    getData(angularIssuesURL);
+    getData(reactIssuesURL);
+    getData(emberIssuesURL);
+    getData(vueIssuesURL);
+
+
+    // CAN WE CALL IT WITH DATA IN MEMORY?
+    renderDataToPage(allData);
+
+
 
 
 });
@@ -196,7 +205,8 @@ function renderDataToPage(allData){
     $('#ember-support').text(allData[2].issues_closed_percentage + '%');
     $('#vue-support').text(allData[3].issues_closed_percentage + '%');
 
-
+    // AFTER RENDERING TABLE DATA THEN TELL TABLESORTER PLUGIN TO SORT TABLE
+    $('#apiDataTable').tablesorter();
 
     showLastUpdateTime();
 
