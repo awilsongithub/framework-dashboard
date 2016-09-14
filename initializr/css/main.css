@@ -1,0 +1,88 @@
+
+
+/* ============================
+   CUSTOM STYLES 
+=============================== */
+
+/* GOOGLE SEARCHES WIDGET IFRAME */
+#trends-widget-1 {
+    height: 400px;
+}
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 200;
+}
+.jumbotron {
+    padding-bottom: 20px;
+}
+/* SELECT CHILD ELEMENTS 2,3,4 IN EACH TABLE ROW  */
+tbody tr > :nth-child(2), tbody tr > :nth-child(3),  tbody tr > :nth-child(4)  {
+    /*font-family: 'Orbitron', sans-serif;*/
+    color: #e84e42;
+    font-size: 18px;
+}
+.dynamic-text  {
+    /*font-family: 'Orbitron', sans-serif;*/
+    color: #e84e42;
+}
+table small {
+    font-weight: lighter;
+}
+
+tbody th {
+    font-size: 24px;
+    font-weight: 500;
+}
+.container {
+    /*width: 900px;*/
+}
+nav {
+    color: white;
+    padding-bottom: 20px;
+}
+#why-these-stats {
+    padding-top: 25px;
+}
+#last-refresh {
+    clear: both;
+    padding-bottom: 25px;
+}
+.grey-row {
+    background-color: #F7F7F9;
+    padding-top: 25px;
+    margin-top: 35px;
+}
+#stats-row {
+    padding-top: 25px;
+}
+.grey-row h3 {
+    padding-bottom: 25px;
+}
+.element-border {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+     box-shadow: 3px 3px 3px grey;
+}
+#other-stats-column {
+    padding-left: 25px;
+}
+
+
+/* ============================
+   DISCARDS & MAYBE LATERS
+=============================== */
+
+/*.static-data td {
+    color: black;
+    font-size: 14px;
+}*/
+
+/* DIDN'T WORK */
+/*@font-face {
+    font-family: Digital;
+    src: url('djb-get-digital.ttf');
+}
+.digital-font {
+    font-family: Digital;
+}*/
