@@ -10,7 +10,8 @@ var angularData;
 var allData = []; // define new array. array needed if we will use ng-repeat to enable filtering and sorting
 
 // UPDATE VARIABLES
-var FREQ = 3600000; // update frequency: 1 hour as only 60 calls/hour allowed by api.gihub without Oauth.
+// update frequency: 1 hour as only 60 calls/hour allowed by api.gihub without Oauth.
+var FREQ = 3600000;
 var repeat = true; // turn updates on or off
 
 // MAIN API URLS
@@ -34,9 +35,6 @@ var reactIssuesURL = 'https://api.github.com/repos/facebook/react/issues';
 ==================================== */
 $(document).ready(function() {
 
-
-
-
     // CALL MAIN API'S FIRST
     getData(angularURL);
     getData(reactURL);
@@ -49,12 +47,8 @@ $(document).ready(function() {
     getData(emberIssuesURL);
     getData(vueIssuesURL);
 
-
-    // CAN WE CALL IT WITH DATA IN MEMORY?
-    renderDataToPage(allData);
-
-
-
+    // START AUTOMATIC REFRESH
+    makeDelayedCallsAndRepeat();
 
 });
 
@@ -89,14 +83,24 @@ function makeDelayedCallsAndRepeat(){
     if (repeat) {
         setTimeout(
             function(){
-                getReactData();
-                getAngularData();
-                makeCallsAndRepeat();
+                // CALL MAIN API'S FIRST
+                getData(angularURL);
+                getData(reactURL);
+                getData(emberURL);
+                getData(vueURL);
+                // CALL "ISSUES" API'S SECOND (TO ADD SINGLE ITEM TO MAIN API DATA)
+                getData(angularIssuesURL);
+                getData(reactIssuesURL);
+                getData(emberIssuesURL);
+                getData(vueIssuesURL);
+                // REPEAT
+                makeDelayedCallsAndRepeat();
             },
             FREQ
         );
     }
 }
+
 
 
 /* ====================================
@@ -239,61 +243,3 @@ function showLastUpdateTime(){
 }
 
 showLastUpdateTime();
-
-// init function containing
-// initial calls to ajax functions
-// call to repeat function
-
-// update frequency variable definition
-
-
-
-
-// show frequency maybe function
-// show last update function
-
-
-
-
-
-
-/* ====================================
-
-    REMOVED OR REFACTORED CODE DISCARDS
-
-==================================== */
-// function getReactData(){
-//     $.ajax({
-//         url: 'https://api.github.com/repos/facebook/react',
-//         cache: false,
-//         dataType: 'JSON',
-//         success: function(data){
-//             reactData = data;
-//             console.log('here is reactData:');
-//             console.log(reactData);
-//
-//             combineData(reactData);
-//         }
-//     });
-// }
-
-
-
-/* ====================================
-    GET REACT DATA OBJECT &
-    PUSH IT ONTO MAIN DATA ARRAY
-==================================== */
-// function getAngularData(){
-//     $.ajax({
-//         url: 'https://api.github.com/repos/angular/angular.js',
-//         cache: false,
-//         dataType: 'JSON',
-//         success: function(data){
-//             angularData = data;
-//             console.log('here is angularData:');
-//             console.log(angularData);
-//
-//             combineData(angularData);
-//         }
-//     });
-// }

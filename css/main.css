@@ -1,14 +1,13 @@
 
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+/* ============================
+   CUSTOM STYLES
+=============================== */
 
 /* GOOGLE SEARCHES WIDGET IFRAME */
 #trends-widget-1 {
     height: 400px;
 }
-
 .jumbotron p {
     margin-bottom: 15px;
     font-size: 16px;
@@ -23,10 +22,6 @@ tbody tr > :nth-child(2), tbody tr > :nth-child(3),  tbody tr > :nth-child(4)  {
     color: #e84e42;
     font-size: 18px;
 }
-/*.static-data td {
-    color: black;
-    font-size: 14px;
-}*/
 .dynamic-text  {
     /*font-family: 'Orbitron', sans-serif;*/
     color: #e84e42;
@@ -72,7 +67,15 @@ nav {
 #other-stats-column {
     padding-left: 25px;
 }
+.static-data td {
+    color: black;
+    font-size: 14px;
+}
 
+
+/* ============================
+   DISCARDS & MAYBE LATERS
+=============================== */
 
 
 

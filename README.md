@@ -1,7 +1,7 @@
 # Client-Side Javascript Framework Dashboard
 A live dashboard displaying Github API metrics (and a few other stats) for leading client-side Javascript frameworks.
 
-![Javascript Framework Dashboard](http://imgur.com/Y5pzyZ0)
+![Imgur](http://i.imgur.com/Y5pzyZ0.png?1)
 
 ## The problem
 LaunchPad Lab is evaluating new client-side Javascript frameworks. To choose the "winning" technology, we need to compare:
